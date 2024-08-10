@@ -1,0 +1,75 @@
+--------------------------------- IMP POINTS TO NOTE ----------------------------------------------------
+
+1. Base case ko leaf node lene ki koshish kro (eg : Max Depth in BT question)
+
+2. << Path related >>  problem in BT follow a fixed pattern :
+        (a) Leaf Node -> Base case
+        (b) root->left then root->right then analyse root
+        (c) most of the time carry a variable (which might contain the final result required)
+        (d) solve from leaf to root approach
+
+---------------------------------------------------------------------------------------------------------
+
+--------------------------------- LEVEL ORDER TRAVERSAL CODE --------------------------------------------
+
+vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> res;
+        queue<TreeNode*>q;
+        if(!root) return res;
+        q.push(root);
+
+        while(!q.empty()){
+            vector<int>v;
+            int s=q.size();
+            for(int i=0;i<s;i++){
+            TreeNode* temp=q.front(); q.pop();
+            v.push_back(temp->val);
+            if(temp->left)q.push(temp->left);
+            if(temp->right) q.push(temp->right);    
+            }
+            res.push_back(v);
+            
+            
+            }
+
+
+
+        return res;
+    }
+
+---------------------------------------------------------------------------------------------------------
+
+--------------------------------- ZIG-ZAG LEVEL ORDER TRAVERSAL -----------------------------------------
+
+vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        vector<vector<int>>ans;
+
+        if(root == NULL)
+        {
+            return ans;
+        }
+
+        queue<TreeNode*>q;
+        q.push(root);
+        bool flag = true;
+        while(!q.empty())
+        {
+            int size = q.size();
+            vector<int>level(size);
+
+            for(int i =0;i<size;i++)
+            {
+                TreeNode* node = q.front();
+                q.pop();
+                int index = flag ? i : (size - 1 - i);
+                level[index] = node->val;
+                if(node->left != NULL)q.push(node->left);
+                if(node->right!=NULL)q.push(node->right);
+            }
+            ans.push_back(level);
+            flag = !(flag);
+        }
+        return ans;
+    }
+
+---------------------------------------------------------------------------------------------------------
