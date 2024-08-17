@@ -232,3 +232,52 @@ public:
 };
 
 ------------------------------------------------------------------------------------------------------------------
+
+-------------------------------- Constructing Unique Binary Tree -------------------------------------------------
+
+// Inorder + Preorder (Yes)
+// Inorder + Postorder (Yes)
+// Preorder + Postorder (No)
+
+// Inorder is must
+
+------------------------------------------------------------------------------------------------------------------
+
+------------------------------- Morris Inorder Traversal Code ---------------------------------------------------
+//left root right
+vector<int> getInorder(TreeNode*root)
+{
+    vector<int>inorder;
+    TreeNode*curr = root;
+    while(curr!=NULL)
+    {
+        if(curr->left==NULL)
+        {
+            inorder.push_back(curr);
+            curr = curr->right;
+        }
+        else
+        {
+            //left jakar fir right last node pe jao aur curr se connect kro
+            TreeNode*prev= curr->left;
+            while(prev->right && prev->right !=curr)
+            {
+                prev = prev->right;
+            }
+
+            if(prev->right == NULL)
+            {
+                prev->right = curr;
+                curr = curr->left;
+            }
+            else
+            {
+                prev->right ==NULL;
+                inorder.push_back(curr->val);
+                curr = curr->right;
+            }
+        }
+    }
+}
+
+----------------------------------------------------------------------------
