@@ -1,3 +1,10 @@
+--------------------- Concepts -----------------------------------------
+
+1. Total degree of a graph = 2*(no.of edges)
+2. Directed graph has indegree and outdegree
+3. In any graph traversal always carry visited array (******************IMP*******************)
+
+
 ---------------------- Adjacency Matrix representation ------------------
 
 int main()
@@ -37,5 +44,37 @@ int main()
     }
     return 0;
 }
+
+------------------------------------------------------------------------------
+
+--------------------------- BFS Traversal ------------------------------------
+
+   vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+        // Code here
+        int vis[V] ={0};
+        vis[0] = 1;
+        queue<int>q;
+        q.push(0);
+        
+        vector<int>bfs;
+        
+        while(!q.empty())
+        {
+            int node = q.front();
+            q.pop();
+            bfs.push_back(node);
+            
+            for(auto it: adj[node])
+            {
+                if(!vis[it])
+                {
+                    vis[it] =1;
+                    q.push(it);
+                }
+            }
+        }
+        
+        return bfs;
+    }
 
 ------------------------------------------------------------------------------
