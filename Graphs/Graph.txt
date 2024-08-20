@@ -3,7 +3,8 @@
 1. Total degree of a graph = 2*(no.of edges)
 2. Directed graph has indegree and outdegree
 3. In any graph traversal always carry visited array (******************IMP*******************)
-
+4. If any question comes of 2d array and it can be solved by graph then assume each cell of 2d matrix
+   as a vertex of graph . Graph vertex will be denoted by pair<int,int> .There will be no adjaceny matrix just traverse in all 8 directions
 
 ---------------------- Adjacency Matrix representation ------------------
 
