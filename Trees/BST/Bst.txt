@@ -1,3 +1,76 @@
 1. The inorder traversal of BST gives value in sorted order.
 2. If in any question they give inorder traversal array and ask whether this is a valid BST or not ,
    then just check whether the  array is sorted (True if yes)
+3. Range Questions : We start with a range of [INT_MIN,INT_MAX] everything between this when go left update max wala part and when
+   go to right update min wala part.
+   
+---------------------------------- DELETE A NODE -------------------------------------------------------
+class Solution {
+public:
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if(root==NULL)
+        {
+            return NULL;
+        }
+        if(root->val == key)
+        {
+            return helper(root);
+        }
+
+        TreeNode * dummy = root;
+        while(root!=NULL)
+        {
+            if(root->val >key)
+            {
+                if(root->left !=NULL && root->left->val == key)
+                {
+                    root->left = helper (root->left);
+                    break;
+                }
+                else
+                {
+                    root= root->left;
+                }
+            }
+            else
+            {
+                if(root->right !=NULL && root->right->val==key)
+                {
+                    root->right = helper(root->right);
+                    break;
+                }
+                else
+                {
+                    root = root->right;
+                }
+            }
+        }
+        return dummy;
+    }
+
+    TreeNode * helper(TreeNode* root)
+    {
+        if(root->left ==NULL)
+        {
+            return root->right;
+        }
+        else if(root->right ==NULL)
+        {
+            return root->left;
+        }
+        TreeNode* rightChild = root->right;
+        TreeNode* lastRight = findLastRight(root->left);
+        lastRight->right  = rightChild;
+        return root->left;
+    }
+
+    TreeNode* findLastRight(TreeNode*root)
+    {
+        if(root->right ==NULL)
+        {
+            return root;
+        }
+        return findLastRight(root->right);
+    }
+};
+--------------------------------------------------------------------------------------------------

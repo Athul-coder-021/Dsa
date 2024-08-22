@@ -1,0 +1,16 @@
+------------------Code to find Complement of a number ----------------------------
+
+ int findComplement(int num) {
+        // Handle the edge case where num is 0
+        if (num == 0) return 1;
+
+        // Find the number of bits in num
+        int num_bits = log2(num) + 1;
+
+        // Create a mask of all 1's with the same number of bits as num
+        int mask = (1 << num_bits) - 1;
+
+        // XOR num with the mask to get the complement
+        return num ^ mask;
+    }
+------------------------------------------------------------------------------------
