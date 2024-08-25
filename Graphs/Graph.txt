@@ -5,7 +5,7 @@
 3. In any graph traversal always carry visited array (******************IMP*******************)
 4. If any question comes of 2d array and it can be solved by graph then assume each cell of 2d matrix
    as a vertex of graph . Graph vertex will be denoted by pair<int,int> .There will be no adjaceny matrix just traverse in all 8 directions
-
+5. Think of multisource bfs , dfs when 2d array comes eg : (0/1 Matrix) (No.of distinct islands).
 ---------------------- Adjacency Matrix representation ------------------
 
 int main()
