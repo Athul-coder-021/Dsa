@@ -1,0 +1,2 @@
+--------------------Number Theory -----------------
+1. If the decimal representation of a number x has exactly c digits, then x≥10c−1
