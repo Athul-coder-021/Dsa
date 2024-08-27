@@ -25,47 +25,50 @@
 
 // I tried with 1 as multisource , but correct way was 0 as multisource
 
-// class Solution {
-// public:
-//     vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
-//         int n = mat.size();
-//         int m = mat[0].size();
+#include <bits/stdc++.h>
+using namespace std;
 
-//         vector<vector<int>> ans(n, vector<int>(m, INT_MAX));
-//         queue<pair<int, int>> q;
+class Solution {
+public:
+    vector<vector<int>> updateMatrix(vector<vector<int>>& mat) {
+        int n = mat.size();
+        int m = mat[0].size();
+
+        vector<vector<int>> ans(n, vector<int>(m, INT_MAX));
+        queue<pair<int, int>> q;
         
-//         // Step 1: Initialize the queue with all the cells containing 0 and set their distance to 0.
-//         for (int i = 0; i < n; i++) {
-//             for (int j = 0; j < m; j++) {
-//                 if (mat[i][j] == 0) {
-//                     ans[i][j] = 0;
-//                     q.push({i, j});
-//                 }
-//             }
-//         }
+        // Step 1: Initialize the queue with all the cells containing 0 and set their distance to 0.
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (mat[i][j] == 0) {
+                    ans[i][j] = 0;
+                    q.push({i, j});
+                }
+            }
+        }
 
-//         int drow[] = {-1, 0, +1, 0};
-//         int dcol[] = {0, +1, 0, -1};
+        int drow[] = {-1, 0, +1, 0};
+        int dcol[] = {0, +1, 0, -1};
 
-//         // Step 2: BFS from all 0 cells simultaneously.
-//         while (!q.empty()) {
-//             int r = q.front().first;
-//             int c = q.front().second;
-//             q.pop();
+        // Step 2: BFS from all 0 cells simultaneously.
+        while (!q.empty()) {
+            int r = q.front().first;
+            int c = q.front().second;
+            q.pop();
 
-//             for (int i = 0; i < 4; i++) {
-//                 int nrow = r + drow[i];
-//                 int ncol = c + dcol[i];
-//                 if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m) {
-//                     if (ans[nrow][ncol] > ans[r][c] + 1) {
-//                         ans[nrow][ncol] = ans[r][c] + 1;
-//                         q.push({nrow, ncol});
-//                     }
-//                 }
-//             }
-//         }
+            for (int i = 0; i < 4; i++) {
+                int nrow = r + drow[i];
+                int ncol = c + dcol[i];
+                if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m) {
+                    if (ans[nrow][ncol] > ans[r][c] + 1) {
+                        ans[nrow][ncol] = ans[r][c] + 1;
+                        q.push({nrow, ncol});
+                    }
+                }
+            }
+        }
 
-//         return ans;
-//     }
-// };
+        return ans;
+    }
+};
 
