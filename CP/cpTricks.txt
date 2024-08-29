@@ -1,2 +1,15 @@
---------------------Number Theory -----------------
+--------------------Number Theory ----------------------------
 1. If the decimal representation of a number x has exactly c digits, then x≥10c−1
+
+--------------------------------------------------------------
+
+------------------------Bit Manipulation ------------------
+1. XOR property
+    -> Xor of same number is 0.
+    -> 0 Xor A = A
+
+2. Shift operators property ((<< Left shift)  & (>> Right shift))
+    -> a = a<<b => a = a*2^b (eg : a<<1 = a*2)
+    -> a = a>>b => a = a/2^b (eg : a>>1 = a/2)
+
+------------------------------------------------------------
