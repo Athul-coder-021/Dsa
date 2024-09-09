@@ -333,3 +333,58 @@ vector<int> shortestPath(int n, int m, vector<vector<int>>& edges) {
     return path;
 }
 ------------------------------------------------------------------------------------
+
+-------------------------- Number of shortest path --------------------------------
+
+class Solution {
+public:
+    int countPaths(int n, vector<vector<int>>& roads) {
+        // Why answer is so large? Give an estimation.
+        // aprox 10k edges possible.
+        // so 10k factorial answers possible.
+        // Will dijkstra work?
+        // The key lies in recording not only aa single path for each node 
+        // but all the shortest paths.
+        int mod = 1e9 + 7;
+        vector<vector<pair<int, int>>> adj(n);
+        for(auto& road : roads) {
+            adj[road[0]].push_back({road[1], road[2]});
+            adj[road[1]].push_back({road[0], road[2]});
+        }
+
+        vector<long> cost(n, LONG_MAX), ways(n, 0);
+        cost[0] = 0;
+        ways[0] = 1;
+        priority_queue<pair<long, int>, vector<pair<long, int>>, greater<>> pq;        
+        pq.push({0, 0});
+        while(!pq.empty()) {
+            // When a node is top of the min heap,
+            // All the shortest paths to this node have been computed!
+            auto [path_dist, node] = pq.top();
+            pq.pop();
+
+            for(auto& [adjNode, wt] : adj[node]) {
+                // check if the path is shorter?
+                
+                if(path_dist + wt < cost[adjNode]) {
+                    cost[adjNode] = (path_dist + wt);
+                    // The ways the parent node has been reached is inherited!
+                    ways[adjNode] = ways[node];
+                    pq.push({cost[adjNode], adjNode});
+                }
+
+                // Is the path of same cost?
+                else if(path_dist + wt == cost[adjNode]) {
+                    ways[adjNode] = (ways[adjNode] + ways[node]) % mod;
+                }
+                
+            }
+        }
+        return ways[n - 1] % mod;
+
+
+
+    }
+};
+
+------------------------------------------------------------------------------------
