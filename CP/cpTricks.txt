@@ -1,6 +1,7 @@
 --------------------Number Theory ----------------------------
 1. If the decimal representation of a number x has exactly c digits, then x≥10c−1
 
+2. (K^i) > (K^(i-1))+(K^(i-2))+..... (always) for i>=2 and K is some positive integer.
 --------------------------------------------------------------
 
 ------------------------Bit Manipulation ------------------
