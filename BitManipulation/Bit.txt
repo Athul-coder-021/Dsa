@@ -14,3 +14,41 @@
         return num ^ mask;
     }
 ------------------------------------------------------------------------------------
+
+--------------------------  Code for bitmasking and finding all the subsets --------
+
+    for(int mask =0;mask< (1<<n);mask++)
+    {
+        for(int i=0;i<n;i++)
+        {
+            if((mask&(1<<i)))
+            {
+                cout<<a[i]<<" ";
+            }
+        }
+        cout<<endl;
+    }
+
+------------------------------------------------------------------------------------
+
+Resources
+
+Number base: 
+https://brilliant.org/wiki/number-base/
+
+
+Bit manipulation:
+https://codeforces.com/blog/entry/73490(highly recommended)
+https://www.hackerearth.com/practice/basic-programming/bitmanipulation/basics-of-bit-manipulation/tutorial/
+
+
+More properties:
+https://stackoverflow.com/questions/12764670/are-there-any-bitwise-operator-laws
+
+
+Useful tricks and formulas:
+https://www.geeksforgeeks.org/bitwise-hacks-for-competitive-programming/
+https://www.geeksforgeeks.org/bit-tricks-competitive-programming/
+https://www.geeksforgeeks.org/bits-manipulation-important-tactics/
+https://www.geeksforgeeks.org/builtin-functions-gcc-compiler/
+
