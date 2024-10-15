@@ -6,7 +6,8 @@
 4. If any question comes of 2d array and it can be solved by graph then assume each cell of 2d matrix
    as a vertex of graph . Graph vertex will be denoted by pair<int,int> .There will be no adjaceny matrix just traverse in all 8 directions
 5. Think of multisource bfs , dfs when 2d array comes eg : (0/1 Matrix) (No.of distinct islands).
-6. Cycle Concepts
+6. When minimum time required to find or complete anything is required use bfs as it does level vise.(Rotten oranges)
+7. Cycle Concepts
     undirected use any of dfs or bfs
     directed use dfs with vis and pathvisited
     directe use bfs with khan's algorithm
