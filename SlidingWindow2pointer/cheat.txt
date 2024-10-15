@@ -1,0 +1,11 @@
+---------------------------------------------------------------------------------
+
+1.  In any case of substring or subarray or max substring etc.. you should start thiniking of sliding window or 2 pointer approach.
+     (eg: https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+
+2.  Use when we have to find something in max consescutive like that. ( eg : https://leetcode.com/problems/max-consecutive-ones-iii/)
+
+3.  Jab bhi kuch subarray mai maximum chahie hota hai tab isse use krooo... 
+        (eg : https://www.geeksforgeeks.org/problems/fruit-into-baskets-1663137462/1)
+
+---------------------------------------------------------------------------------
