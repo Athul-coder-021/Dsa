@@ -41,15 +41,15 @@ int main()
 {
     int n, m;
     cin >> n >> m;
-    // adjacency matrix for undirected graph
-    // time complexity: O(n)
-    int adj[n+1][n+1];
+    // adjacency list for undirected graph
+    // time complexity: O(2E)
+    vector<int> adj[n+1];
     for(int i = 0; i < m; i++)
     {
         int u, v;
         cin >> u >> v;
-        adj[u][v] = 1;
-        adj[v][u] = 1  // this statement will be removed in case of directed graph
+        adj[u].push_back(v);
+        adj[v].push_back(u);
     }
     return 0;
 }
@@ -114,6 +114,49 @@ int main()
         dfs(start,adj,vis,ans);
         return ans;
     }
+
+------------------------------------------------------------------------------
+
+-------------------------- CYCLE EXIST IN UNDIRECTED GRAPH OR NOT (bfs) ------------ // DFS DONE IN NOTES
+
+bool bfs(int startNode, vector<vector<int>>& adj, vector<int>& vis) {
+    queue<pair<int, int>> q; // Pair to track (current_node, parent_node)
+    q.push({startNode, -1}); // Start with the given node and no parent
+    vis[startNode] = 1;
+
+    while (!q.empty()) {
+        int node = q.front().first;
+        int parent = q.front().second;
+        q.pop();
+
+        for (auto neighbor : adj[node]) {
+            if (!vis[neighbor]) {
+                vis[neighbor] = 1; // Mark as visited
+                q.push({neighbor, node}); // Push with current node as parent
+            } else if (neighbor != parent) {
+                // If already visited and not the parent, we found a cycle
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// Function to detect cycle in an undirected graph
+bool isCycle(vector<vector<int>>& adj) {
+    int n = adj.size();
+    vector<int> vis(n, 0); // Visited array
+
+    // Check all components of the graph
+    for (int i = 0; i < n; i++) {
+        if (!vis[i]) {
+            if (bfs(i, adj, vis)) {
+                return true; // Cycle found
+            }
+        }
+    }
+    return false; // No cycle found
+};
 
 ------------------------------------------------------------------------------
 
